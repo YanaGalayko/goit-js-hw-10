@@ -18,10 +18,7 @@ new SlimSelect({
     select: '.breed-select'
   })
 })
-.catch(error => {
-    console.error(error);
-    showError()
-})
+.catch(showError)
 .finally(hideLoader)
 
 
@@ -45,12 +42,8 @@ function handlerChangeSelect() {
     selectors.breedInfo.innerHTML = createMarkupCatInfo(data)
     console.log(data);
    })
-   .catch(error => {
-    console.error(error);
-    selectors.catInfoDiv.innerHTML = '';
-    showError()
-  })
-  .finally(hideLoader)
+   .catch(showError)
+   .finally(hideLoader)
 };
 
 function createMarkupCatInfo(data) {
@@ -61,11 +54,12 @@ function createMarkupCatInfo(data) {
                 <p class="cat-description">${breeds[0].description}</p>
                 <p class="cat-temperament">
                 <span class="cat-temperament-title">Temperament:</span>${breeds[0].temperament}</p>`
-    }).join('')          
+    }).join('') 
 };
 
 function showLoader() {
     selectors.loaderInfo.style.display = 'block';
+    
 };
 
 function hideLoader() {
@@ -73,7 +67,7 @@ function hideLoader() {
 };
 
   function showError() {
-    Notiflix.Notify.failure(selectors.errorInfo.textContent);
+    Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
 };
 
 
