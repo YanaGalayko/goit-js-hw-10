@@ -39,6 +39,9 @@ function handlerChangeSelect() {
    showLoader();
    fetchCatByBreed(breedCatInfo)
    .then(data => {
+    if(!data.length) {
+        throw new Error()
+    }
     selectors.breedInfo.innerHTML = createMarkupCatInfo(data)
     console.log(data);
    })
