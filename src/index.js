@@ -52,7 +52,7 @@ function handlerChangeSelect() {
 function createMarkupCatInfo(data) {
     return data
     .map(({url, breeds}) => { 
-        return `<img src="${url}" alt="${breeds[0].name}" width="300px" />
+        return `<img src="${url}" alt="${breeds[0].name}" width="400px" />
                 <h2 class="cat-name">${breeds[0].name}</h2>
                 <p class="cat-description">${breeds[0].description}</p>
                 <p class="cat-temperament">
@@ -61,8 +61,7 @@ function createMarkupCatInfo(data) {
 };
 
 function showLoader() {
-    selectors.loaderInfo.style.display = 'block';
-    
+    selectors.loaderInfo.style.display = 'block';  
 };
 
 function hideLoader() {
@@ -70,6 +69,7 @@ function hideLoader() {
 };
 
   function showError() {
+    selectors.breedInfo.textContent = ''
     Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
 };
 
